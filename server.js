@@ -23,7 +23,7 @@ mongoose.connect(mongoURL, {useNewUrlParser: true})
     console.log(`Error connecting to mongoDB: ${err}`);
   });
 
-app.use(apiRoutes)
+// app.use(apiRoutes)
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
