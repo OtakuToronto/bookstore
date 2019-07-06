@@ -1,11 +1,11 @@
 require("dotenv").config();
 const axios = require("axios");
-const db = require("../models/Book");
+const Book = require('../models/Book');
 const path = require("path");
 
 module.exports = function(app) {
     app.get("/api/books", (req, res) => {
-        db.Book.find().then(
+        Book.find().then(
             (booksData) => {
                 res.json(booksData);
             }
@@ -33,7 +33,7 @@ module.exports = function(app) {
     });
 
     app.post("/api/books", (req, res) => {
-        db.Book.create(req.body).then(
+        Book.create(req.body).then(
             (response) => {
                 res.json({successful: response});
             }
@@ -45,7 +45,7 @@ module.exports = function(app) {
     });
 
     app.delete("/api/books/:id", (req, res) => {
-        db.Book.findByIdAndDelete(req.params.id).then(
+        Book.findByIdAndDelete(req.params.id).then(
             (response) => {
                 res.json({successful: response});
             }
