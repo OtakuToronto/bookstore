@@ -2,6 +2,7 @@ import React from "react";
 import BookResult from "../BookResult";
 
 function ResultsContainer(props) {
+    console.log(props)
     if(props.path === "/") {
         return(
             <div id="resultsContainer">
