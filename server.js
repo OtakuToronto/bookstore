@@ -4,6 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const mongoose = require("mongoose");
 const apiRoutes = require('./routes/api-routes')
+const ghpages = require('gh-pages');
 const mongoURL = process.env.MONGODB_URI || "mongodb://localhost:27017/googlebooks";
 
 // Define middleware here
@@ -32,3 +33,8 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
+ghpages.publish('dist', {
+  branch: 'master',
+  repo: 'https://github.com/OtakuToronto/bookstore'
+}, callback);
